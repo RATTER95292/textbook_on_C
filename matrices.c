@@ -44,11 +44,10 @@ void main(){
 
 void importMatrix(int matrix[ROWS][COLS]){
     const char *quest1[] = {"Камилла","Артур","Боб","Мария"};
-    const char *quest2[] = {"Камиллы","Артура","Боба","Марии"};
     for(int i=0; i<4; i++){
         for(int j=0; j<4; j++){
             if(i != j){ 
-                printf("Сколько раз %s был(а) в гостях у %s ?   ", quest1[i], quest2[j]);
+                printf("Сколько раз %s был(а) в гостях у %s ?   ", quest1[i], quest1[j]);
                 scanf("%d",&matrix[i][j]);
             }else{
                 matrix[i][j] = 0;

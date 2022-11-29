@@ -5,32 +5,40 @@
 #define ROWS 4
 #define COLS 4
 
+//Функция для ввода матрицы
 void importMatrix(int matrix[ROWS][COLS]);
 
-void main(){
+//Функция для подсяета количество гостей
+int maxOwner(int matrix[ROWS][ROWS]);
 
-    const char *quest[] = {"хозяин/гость","Камилла","Артур  ","Боб    ","Мария  "};
-    int a[4][4] = {{ 0, 2, 0, 3},                         
-                    {0, 0, 0, 1},                         
-                    {4 , 0, 0,0},
-                    {0 , 5, 0,0}};                        
+//Функция для подсяета количество гостей
+int maxQuest(int matrix[ROWS][ROWS]);
+
+void main(){
+    
+    const char *quest2[] = {"Камилла","Артур  ","Боб    ","Мария  "};
+    const char *quest1[] = {"хозяин/гость","Камилла","Артур","Боб","Мария"};
+    int a[4][4];                     
 
     importMatrix(a);
-    
+
+    //Вывод матрицы
     for (int i=0; i<4; i++){
         if(i == 0){
-            for(int k = 0; k < 5; k++) printf(" %*s   ",0,quest[k]);
+            for(int k = 0; k < 5; k++) printf(" %-15s",quest1[k]);
             printf("\n");
         }
-        printf("  %s", quest[i+1]);
+        printf(" %s", quest2[i]);
         for (int j=0; j<4; j++){ 
             if(j == i){
-                printf("          -");
+                printf("         -");
             }else{
-            printf(" %*d",10,a[i][j]);}}             
+            printf("%10d",a[i][j]);}}             
         printf("\n");                                         
     }
     
+    printf("\nБольше всего гостей принял(а) %s\n", quest1[maxOwner(a)+1]);
+    printf("Больше всего в гостях был(а) %s\n",quest1[maxQuest(a)+1]);
     
 }
 
@@ -40,11 +48,52 @@ void importMatrix(int matrix[ROWS][COLS]){
     for(int i=0; i<4; i++){
         for(int j=0; j<4; j++){
             if(i != j){ 
-                printf("Сколько раз %s был в гостях у %s ?   ", quest1[i], quest2[j]);
+                printf("Сколько раз %s был(а) в гостях у %s ?   ", quest1[i], quest2[j]);
                 scanf("%d",&matrix[i][j]);
             }else{
                 matrix[i][j] = 0;
             }
         }
     }
+    printf("\n");
+}
+
+int maxQuest(int matrix[ROWS][ROWS]){
+    int q =0;
+    int q1 = 0;
+    int i,max = 0;
+    for(i=0; i<4; i++){
+        for(int j=0; j<4; j++){
+            if(i != j){ 
+                    max += matrix[j][i];
+                }
+        }
+        if(max > q){
+            q = max;
+            q1 = i;
+        }
+        max = 0;
+    }
+    
+    return q1;
+}
+
+int maxOwner(int matrix[ROWS][ROWS]){
+    int o =0;
+    int o1 = 0;
+    int i,max = 0;
+    for(i=0; i<4; i++){
+        for(int j=0; j<4; j++){
+            if(i != j){ 
+                    max += matrix[i][j];
+                }
+        }
+        if(max > o){
+            o = max;
+            o1 = i;
+        }
+        max = 0;
+    }
+    
+    return o1;
 }

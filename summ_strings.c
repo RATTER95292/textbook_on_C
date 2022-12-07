@@ -11,9 +11,9 @@ int main()
     char s2[50];
     
     printf("Введите первую строку:  ");
-    scanf("%s",&s1);
+    gets(s1);
     printf("Введите вторую строку:  ");
-    scanf("%s",&s2);
+    gets(s2);
     
     char *rezult = concat(s1, s2);
     printf("%s\n", rezult);

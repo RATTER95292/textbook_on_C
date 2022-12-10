@@ -7,5 +7,5 @@
   <li>Линейный поиск в массиве (linear_array_search)</li>
   <li>Двоичный поиск в массиве (linear_array_search2)</li>
   <li>Работа с матрицами (matrices)</li>
-  <li>Работа строковым типом (summ_strings)</li>
+  <li>Работа строковым типом (summ_strings)т</li>
 </ol>

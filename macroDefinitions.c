@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 #define S(x) (x*x)
@@ -9,22 +8,21 @@ int main(int argc, char *argv[])
 {
   int a,b,c,max;
   
- 
-  printf("Введите сторонц квадрата:  ");
+  // Нахождение площади квадрата
+  printf("Введите сторону квадрата:  ");
   scanf("%d",&a);
   int s = S(a);
   printf("Площадь квадрата равна:  ");
   printf("%d\n", s);
 
-  //
+  // Нахождение максимального числа и 3 чисел
   printf("Введите первое число:  ");
-  scanf("%d\n", &a);
+  scanf("%d", &a);
   printf("Введите второе число:  ");
-  scanf("%d\n", &b);
+  scanf("%d", &b);
   max = MAX(a,b);
-  printf("Максимальное число: %d",max);
   printf("Введите третье число:  ");
-  scanf("%d\n",&c);
+  scanf("%d",&c);
   max = MAX(max,c);
   printf("Максимальное число: %d",max);
   

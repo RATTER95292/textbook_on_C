@@ -12,6 +12,9 @@ void enterArray(int array[],int size);
 void printArray(int array[],int size);
 // функция двоичного поиска
 int binSearch(int array[],int size,int value);
+//
+void sorting(array[],int size);
+
 /* 
 * функция обработки массивов array1[] и array2[], формирование массива array3[]
 * возвращает число элементов в сформированном массиве
@@ -62,13 +65,27 @@ void enterArray(int array[],int size){
 }
 
 int binSearch(int array[],int size,int key){
-    for(int i=0; i <= size; i++){
-        if(array[i] == key){
-            return 1;
-        }else{
-            return 0;
-        }
-    }
+    int lowerBound = 0;
+    int upperBound = size - 1;
+    int M = 0;
+    while (True){ 
+       M = (lowerBound + upperBound) / 2
+       if (key < array[M])
+         upperBound = M – 1; 
+       else if (key > array[M])
+         lowerBound = M + 1;
+       else{
+          return True;
+          break;
+       }
+       if (lowerBound > upperBound){
+          return False;
+          break;
+       }
+  }
+}
+
+void sorting(array[],int size){
 }
 
 int sortArray(int array[], int array1[], int array2[], int size, int size2){

@@ -20,19 +20,20 @@ int main()
     int C[MAXN];
     int n,m;
 
-    printf("Enter n and m (1-%d) ",MAXN);
+    printf("Введите размер массива A (1-%d) ",MAXN);
     scanf("%d",&n);
+    printf("Введите размер массива B (1-%d) ",MAXN);
     scanf("%d",&m);
-    if((n<1 || n>MAXN) || (m<1 || m>MAXN))
-    {
+    
+    if((n<1 || n>MAXN) || (m<1 || m>MAXN)){
         printf("Error! a<1 or b>%d",MAXN);
         getch();
         return 1;
     }
     
-    printf("Enter an array А\n");
+    printf("Введите элементы массива А\n");
     vvodMassiva(A,n);
-    printf("Enter an array В\n");
+    printf("Введите элементы массива В\n");
     vvodMassiva(B,m);
     
     int size = search(C,A,B,n,m);
@@ -51,7 +52,7 @@ int search(int C[], int A[], int B[], int n, int m ){
     
     int i,j,c,count = 0;
     int k=0;
-    for(i=0; i<m; i++)
+    for(i=0; i<m+n; i++)
     {
         if ((find_in_massive(A, m, B[i], 3) == 1) && (find_in_massive(C,k, B[i], 1) == 0)){
             C[k] = B[i];

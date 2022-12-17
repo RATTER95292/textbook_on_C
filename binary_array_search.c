@@ -13,7 +13,7 @@ void printArray(int array[],int size);
 // функция двоичного поиска
 int binSearch(int array[],int size,int value);
 //
-void sorting(array[],int size);
+void sorting(int array[],int size);
 
 /* 
 * функция обработки массивов array1[] и array2[], формирование массива array3[]
@@ -41,16 +41,18 @@ int main(){
     
     printf("Enter an array А\n");
     enterArray(A,n);
+    sorting(A,n);
     printf("Enter an array В\n");
     enterArray(B,m);
     
-    int key = sortArray(A, B, C , n, m);
+    int key = sortArray(B, A, C , m, n);
     
     printf("Array А\n");
     printArray(A,n);
     printf("Array В\n");
     printArray(B,m);
     printf("Itog array\n");
+    
     printArray(C,key);
     
     return 0;
@@ -68,24 +70,34 @@ int binSearch(int array[],int size,int key){
     int lowerBound = 0;
     int upperBound = size - 1;
     int M = 0;
-    while (True){ 
-       M = (lowerBound + upperBound) / 2
+    while(1){ 
+       M = (lowerBound + upperBound)/2;
        if (key < array[M])
-         upperBound = M – 1; 
+         upperBound = M - 1; 
        else if (key > array[M])
          lowerBound = M + 1;
        else{
-          return True;
+          return 1;
           break;
        }
        if (lowerBound > upperBound){
-          return False;
+          return 0;
           break;
        }
   }
 }
 
-void sorting(array[],int size){
+void sorting(int array[],int size){
+    int g =0;
+    for (int i = 0; i < size; i++){
+        for (int j = 0; j < size - 1; j++){
+            if (array[j] > array[j + 1]){
+                int z = array[j];
+                array[j]=array[j+1];
+                array[j + 1] = z;
+            }
+        }
+    }
 }
 
 int sortArray(int array[], int array1[], int array2[], int size, int size2){
@@ -93,7 +105,7 @@ int sortArray(int array[], int array1[], int array2[], int size, int size2){
     int k=0;
     for(i=0; i <= size; i++)
     {
-        if ((binSearch(array1, size2, array[i]) == 1)){
+        if ((binSearch(array1, size2, array[i]) == 0)){
             array2[k] = array[i];
             k++;
         }
